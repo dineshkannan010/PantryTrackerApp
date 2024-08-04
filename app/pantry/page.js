@@ -1,7 +1,8 @@
 "use client"
 import { Box, Typography, AppBar, Modal, Toolbar, IconButton, Button, Card, Chip, Stack, Divider, FormControl, InputLabel, Select, MenuItem, TextField} from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import {fetchPantryItems, addPantryItem, updatePantryItemQuantity } from "../../services/firebaseService";
+import Link from "next/link";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -36,6 +37,9 @@ export default function Pantry() {
         setError('');
         setOpen(false);
       };
+
+    const camera = useRef(null);
+    const [image, setImage] = useState(null);
 
     {/* Function to update and retrieve the Pantry list  */}
     const updatePantry = async () => {
@@ -143,7 +147,7 @@ export default function Pantry() {
       </AppBar>
     </Box>
     {/* Filter Section */}
-    <Box width="100%" height="40px" sx={{ margin: '20px' }}  bgcolor={'#8A2BE2'}
+    <Box width="70%" height="40px" sx={{ margin: '20px' }}  bgcolor={'#8A2BE2'}
         display={"flex"}
         justifyContent={"left"}
         alignItems={"center"}
@@ -185,7 +189,7 @@ export default function Pantry() {
       alignItems="left"
       flexGrow={500}
       border={'1px solid #333'}
-      sx={{ width: '100%', padding: '10px', textAlign: 'left' }}>
+      sx={{ width: '70%', padding: '10px', textAlign: 'left' }}>
     <Box>
         <Typography color="#000000" variant="h4">
           Items in Pantry
@@ -304,8 +308,13 @@ export default function Pantry() {
           </Stack>
         </Box>
       </Modal>
-
-
+        <Box>
+            <Link href="../camera" passHref>
+                <Button variant="contained" color="primary">
+                    Open Camera
+                </Button>
+            </Link>
+        </Box>
     </Box>
   );
 } 

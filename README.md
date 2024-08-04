@@ -17,3 +17,4 @@ bun dev
 Packages installed:
 
 npm install @mui/material @emotion/react @emotion/styled @mui/icons-material npm install firebase
+npm i react-camera-pro

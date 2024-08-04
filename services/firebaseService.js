@@ -1,5 +1,6 @@
-import { firestore } from '@/firebase';
+import { firestore, storage } from '@/firebaseConfig';
 import {collection, getDocs, doc, addDoc, deleteDoc, updateDoc, query } from 'firebase/firestore'
+import { ref, uploadString, getDownloadURL } from 'firebase/storage';
 
 export const fetchPantryItems = async () => {
     const snapshot = query(collection(firestore, 'Pantry'))
@@ -35,3 +36,14 @@ export const updatePantryItemQuantity = async (id, quantity) => {
       console.error("Error updating document: ", e);
     }
   };
+
+export const uploadImage = async (imageData) => {
+    const storageRef = ref(storage, `images/${Date.now()}.jpg`);
+    const snapshot = await uploadString(storageRef, imageData, 'data_url');
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    return downloadURL;
+};
+
+export const saveImageURL = async (url) => {
+    await addDoc(collection(firestore, 'Image'), { imageUrl: url });
+};
