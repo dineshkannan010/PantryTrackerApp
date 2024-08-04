@@ -1,95 +1,82 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+import {Box, AppBar, Toolbar, IconButton, Typography, Button} from '@mui/material';
+import Link from 'next/link';
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+  return(
+    <Box 
+      width={"100vw"} height={"100vh"}
+      display={"flex"}
+      justifyContent={"center"}
+      flexDirection={'column'}
+      alignItems={"center"}
+      sx={{backgroundImage: 'url(/bgcolor.jpg)', // Path relative to the public directory
+        backgroundSize: 'cover', // Ensure the image covers the entire Box
+        backgroundPosition: 'center', // Center the image 
+        }}
+    >
+      {/* Navbar */}
+    <Box sx={{ flexGrow: 1, width: "100%" }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Pantry Tracker System
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+    <Box display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      flexGrow={500}
+      sx={{ width: '100%', padding: '10px', textAlign: 'center' }}>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <Box width="100%" height="40px" sx={{ marginBottom: '30px' }} 
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        padding={6}
+      >
+        <Typography variant="h1" component="div" sx={{ flexGrow: 1 }}>
+            Pantry Tracker System
+          </Typography>
+      </Box>
+      <Box width="100%" height="40px" sx={{ marginBottom: '20px' }} 
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        padding={12}
+      >
+        <Typography variant="h5" component="div" >
+            Track your pantry with zero hassle
+          </Typography>
+      </Box>
+      <Box
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        padding={2}
+      >
+        <Link href="/pantry" passHref>
+          <Button variant='contained' sx={{ margin: 3 }}>View Pantry</Button>
+        </Link>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </Box>
+    </Box>
+    </Box>
   );
+
 }
