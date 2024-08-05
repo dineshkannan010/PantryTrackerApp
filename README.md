@@ -18,3 +18,5 @@ Packages installed:
 
 npm install @mui/material @emotion/react @emotion/styled @mui/icons-material npm install firebase
 npm i react-camera-pro
+npm install -g firebase-tools
+npm install openai dotenv
